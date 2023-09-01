@@ -5,46 +5,46 @@
             Quero configurar meu produto de acordo com meu tamanho e gosto
             E escolher a quantidade
             Para depois inserir no carrinho
+            
+            Contexto:
+            Dado que é obrigatório selecionar cor, tamanho e quantidade do item
 
             Cenário: Válido
-            Dado que é obrigatório selecionar cor, tamanho e quantidade do item
-            Quando eu selecionar 1 blusa rosa tamanho P
+            Quando eu selecionar <cor>, <tamanho>, <quantidade>
             E clicar em comprar
             Então o item será adicionado ao carrinho de compras
 
             Cenário: Esqueceu de selecionar o tamanho
-            Dado que é obrigatório selecionar cor, tamanho e quantidade do item
-            Quando eu selecionar 2 blusas amarelas
+            Quando eu selecionar <cor>, <quantidade>
             E clicar em comprar
             Então deve exibir a mensagem de erro "Por favor, selecione o tamanho"
 
-            Cenário: Válido 2
+            Contexto:
             Dado que deve ser permitido apenas 10 produtos por venda
-            Quando eu selecionar 10 calças azuis tamanho M
+
+            Cenário: Válido 2
+            Quando eu selecionar <cor>, <tamanho>, <quantidademenorque10>
             E clicar em comprar
             Então os itens serão adicionados ao carrinho de compras
 
             Cenário: Excedeu limite de produtos
-            Dado que deve ser permitido apenas 10 produtos por venda
-            Quando eu selecionar 13 calças verdes tamanho P
+            Quando eu selecionar <cor>, <tamanho>, <quantidademaiorque10>
             E clicar em comprar
             Então deve exibir a mensagem de erro "Seu limite de compras é de 10 produtos da loja"
 
-            Cenário: Válido 3
+            Contexto: 
             Dado que quando eu clicar no botão limpar deve voltar ao estado original
-            Quando eu clico no botão limpar
+
+            Cenário: Válido 3
+            Quando eu clico <botaolimpar>
             Então deve voltar ao estado original
 
             Cenário: Erro 3
-            Dado que quando eu clicar no botão limpar deve voltar ao estado original
-            Quando eu clico no botão limpar
+            Quando eu clico <botaolimpar>
             Então deve ir para página de login
 
             Esquema do Cenário: Autenticar múltiplas opções
-            Quando eu selecionar <modelo>
-            E a <cor>
-            E o <tamanho>
-            E a <quantidade>
+            Quando eu selecionar <modelo>, <cor>, <tamanho>, <quantidade>
             Então deve exibir a <mensagem>
 
             Exemplos:
@@ -52,6 +52,4 @@
             | "blusa"   | "rosa"    | "P"     | 1          | "Ótima escolha"                                  |
             | "calça"   | ""        | "M"     | 2          | "Por favor, selecione a cor"                     |
             | "jaqueta" | "amarela" | "G"     | 13         | "Seu limite de compras é de 10 produtos da loja" |
-
-
 
